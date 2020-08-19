@@ -1,0 +1,40 @@
+{
+    "name": "marshmallow/gtmetrix",
+    "description": "Get GT Metrix information in Laravel Nova for you website pages. This package can also be used stand-alone.",
+    "keywords": ["marshmallow", "laravel", "gtmetrix", "laravel nova", "nova package", "laravel nova gtmetrix"],
+    "homepage": "https://github.com/Marshmallow-Development/",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Stef",
+            "email": "stef@marshmallow.dev",
+            "homepage": "https://marshmallow.dev",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "email": "stef@marshmallow.dev"
+    },
+    "minimum-stability": "dev",
+    "require": {
+        "php": "^7.4",
+        "philcook/gtmetrix": "^1.0",
+        "comodolab/nova-help": "^0.3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Marshmallow\\GTMetrix\\": "src"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Marshmallow\\GTMetrix\\ServiceProvider"
+            ],
+            "aliases": {
+                "GTMetrix": "Marshmallow\\GTMetrix\\Facades\\GTMetrix"
+            }
+        }
+    }
+}
