@@ -91,32 +91,37 @@ class GTMetrixHelper
     public function getCredits()
     {
         $json = $this->getStatusJson();
+        if (!isset($json->api_credits)) {
+            return 0;
+        }
         return $json->api_credits;
     }
 
     public function getCreditRefillDate()
     {
         $json = $this->getStatusJson();
+        if (!isset($json->api_credits)) {
+            return 0;
+        }
         return Carbon::parse($json->api_refill);
     }
 
     public function getStatusJson()
     {
-        if (!file_exists($this->statusFilePath())) {
-            $this->getAccountStatus();
+        try {
+            if (!file_exists($this->statusFilePath())) {
+                $this->getAccountStatus();
+            }
+            return json_decode(file_get_contents($this->statusFilePath()));
+        } catch (Exception $e) {
+            return;
         }
-
-        return json_decode(file_get_contents($this->statusFilePath()));
     }
 
     public function getAccountStatus()
     {
-        if (!config('gtmetrix.email_address')) {
-            throw new Exception('Please provide your GTmetrix email address in your config of .env file');
-        }
-
-        if (!config('gtmetrix.api_key')) {
-            throw new Exception('Please provide your GTmetrix api key in your config of .env file');
+        if (!config('gtmetrix.email_address') || !config('gtmetrix.api_key')) {
+            return;
         }
 
         $response = Http::withBasicAuth(
