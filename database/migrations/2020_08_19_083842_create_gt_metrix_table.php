@@ -13,7 +13,7 @@ class CreateGtMetrixTable extends Migration
      */
     public function up()
     {
-        Schema::create('gtmetrixables', function (Blueprint $table) {
+        Schema::create('gtmetrixable', function (Blueprint $table) {
             $table->id();
             $table->morphs('gtmetrixable');
             $table->string('path')->nullable()->default(null);
@@ -59,6 +59,6 @@ class CreateGtMetrixTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('gtmetrixables');
+        Schema::dropIfExists('gtmetrixable');
     }
 }
