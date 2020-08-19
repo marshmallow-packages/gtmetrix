@@ -21,6 +21,14 @@ class GTMetrixHelper
             throw new Exception('This resource does have a method of getFullPublicPath(). Maybe you are not using the trait "GTMetrix"');
         }
 
+        if (!config('gtmetrix.email_address')) {
+            throw new Exception('Please provide your GTmetrix email address in your config of .env file');
+        }
+
+        if (!config('gtmetrix.api_key')) {
+            throw new Exception('Please provide your GTmetrix api key in your config of .env file');
+        }
+
         $path = $model->getFullPublicPath();
 
         $client = new GTMetrixClient();
@@ -103,6 +111,14 @@ class GTMetrixHelper
 
     public function getAccountStatus()
     {
+        if (!config('gtmetrix.email_address')) {
+            throw new Exception('Please provide your GTmetrix email address in your config of .env file');
+        }
+
+        if (!config('gtmetrix.api_key')) {
+            throw new Exception('Please provide your GTmetrix api key in your config of .env file');
+        }
+
         $response = Http::withBasicAuth(
             config('gtmetrix.email_address'),
             config('gtmetrix.api_key')
