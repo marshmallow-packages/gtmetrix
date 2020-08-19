@@ -13,5 +13,10 @@ GTMETRIX_EMAIL_ADDRESS=...
 GTMETRIX_API_KEY=...
 ```
 
+### Prepare your models
+1. Add `use Actionable;` and `use GTMetrix;` to your model.
+2. Add the public method getFullPublicPath() to your models. When getting the status from GT Metrix, we will use the result of this method as the url you want to check.
 
-Add `use Actionable;` to your models so you can view the action and its status in Nova.
+### Prepare you nova resources
+1. Add `GTMetrixField::make('GT Metrix'),` as a field.
+2. Add `new CheckGTMetrixScore,` as an action.
