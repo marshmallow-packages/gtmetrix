@@ -68,7 +68,7 @@ class Post extends Model
 }
 ```
 
-### Prepare you nova resources
+### Prepare your nova resources
 1. Add `GTMetrixField::make('GT Metrix'),` as a field.
 ```php
 use Marshmallow\GTMetrix\GTMetrixField;
