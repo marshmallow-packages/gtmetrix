@@ -6,7 +6,7 @@ use Exception;
 use Illuminate\Bus\Queueable;
 use Laravel\Nova\Actions\Action;
 use Illuminate\Support\Collection;
-use Comodolab\Nova\Fields\Help\Help;
+use Marshmallow\Nova\Fields\Help\Help;
 use Laravel\Nova\Fields\ActionFields;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
