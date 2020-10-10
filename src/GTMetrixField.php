@@ -41,8 +41,10 @@ class GTMetrixField extends Field
     {
         if ($resource->gtmetrixable && $resource->gtmetrixable->count()) {
             $metric = $resource->gtmetrixable->last();
+
             return $metric;
         }
+
         return null;
     }
 }

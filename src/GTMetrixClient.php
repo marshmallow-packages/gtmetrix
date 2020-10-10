@@ -9,6 +9,7 @@ class GTMetrixClient extends BaseGTMetrixClient
     public function setEndpoint($endpoint)
     {
         $this->endpoint = $endpoint;
+
         return $this;
     }
 

@@ -4,14 +4,14 @@ namespace Marshmallow\GTMetrix\Actions;
 
 use Exception;
 use Illuminate\Bus\Queueable;
-use Laravel\Nova\Actions\Action;
-use Illuminate\Support\Collection;
-use Marshmallow\Nova\Fields\Help\Help;
-use Laravel\Nova\Fields\ActionFields;
-use Illuminate\Queue\SerializesModels;
-use Illuminate\Queue\InteractsWithQueue;
-use Marshmallow\GTMetrix\Facades\GTMetrix;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Collection;
+use Laravel\Nova\Actions\Action;
+use Laravel\Nova\Fields\ActionFields;
+use Marshmallow\GTMetrix\Facades\GTMetrix;
+use Marshmallow\Nova\Fields\Help\Help;
 
 class CheckGTMetrixScore extends Action implements ShouldQueue
 {
@@ -44,7 +44,6 @@ class CheckGTMetrixScore extends Action implements ShouldQueue
      * @var string
      */
     public $confirmText = 'Are you sure you want to run this action?';
-
 
     /**
      * Perform the action on the given models.

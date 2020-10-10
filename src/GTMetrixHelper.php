@@ -2,30 +2,29 @@
 
 namespace Marshmallow\GTMetrix;
 
-use Exception;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\Http;
-use Illuminate\Database\Eloquent\Model;
-use Marshmallow\GTMetrix\GTMetrixClient;
 use Entrecore\GTMetrixClient\GTMetrixTest;
+use Exception;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Http;
 
 class GTMetrixHelper
 {
     public function getScore(Model $model)
     {
-        if (!method_exists($model, 'gtmetrixable')) {
+        if (! method_exists($model, 'gtmetrixable')) {
             throw new Exception('This resource does have a method of gtmetrixable(). Maybe you are not using the trait "GTMetrix"');
         }
 
-        if (!method_exists($model, 'getFullPublicPath')) {
+        if (! method_exists($model, 'getFullPublicPath')) {
             throw new Exception('This resource does have a method of getFullPublicPath(). Maybe you are not using the trait "GTMetrix"');
         }
 
-        if (!config('gtmetrix.email_address')) {
+        if (! config('gtmetrix.email_address')) {
             throw new Exception('Please provide your GTmetrix email address in your config of .env file');
         }
 
-        if (!config('gtmetrix.api_key')) {
+        if (! config('gtmetrix.api_key')) {
             throw new Exception('Please provide your GTmetrix api key in your config of .env file');
         }
 
@@ -91,27 +90,30 @@ class GTMetrixHelper
     public function getCredits()
     {
         $json = $this->getStatusJson();
-        if (!isset($json->api_credits)) {
+        if (! isset($json->api_credits)) {
             return 0;
         }
+
         return $json->api_credits;
     }
 
     public function getCreditRefillDate()
     {
         $json = $this->getStatusJson();
-        if (!isset($json->api_credits)) {
+        if (! isset($json->api_credits)) {
             return 0;
         }
+
         return Carbon::parse($json->api_refill);
     }
 
     public function getStatusJson()
     {
         try {
-            if (!file_exists($this->statusFilePath())) {
+            if (! file_exists($this->statusFilePath())) {
                 $this->getAccountStatus();
             }
+
             return json_decode(file_get_contents($this->statusFilePath()));
         } catch (Exception $e) {
             return;
@@ -120,7 +122,7 @@ class GTMetrixHelper
 
     public function getAccountStatus()
     {
-        if (!config('gtmetrix.email_address') || !config('gtmetrix.api_key')) {
+        if (! config('gtmetrix.email_address') || ! config('gtmetrix.api_key')) {
             return;
         }
 
