@@ -19,7 +19,7 @@
     "minimum-stability": "dev",
     "require": {
         "php": "^7.4|^8.0",
-        "philcook/gtmetrix": "^1.0",
+        "philcook/gtmetrix": "^1.0 || ^2.0",
         "marshmallow/nova-fields-help": "^1.0"
     },
     "autoload": {
