@@ -11,6 +11,7 @@ use Illuminate\Support\Collection;
 use Laravel\Nova\Actions\Action;
 use Laravel\Nova\Fields\ActionFields;
 use Marshmallow\GTMetrix\Facades\GTMetrix;
+use Laravel\Nova\Http\Requests\NovaRequest;
 use Marshmallow\Nova\Fields\Help\Help;
 
 class CheckGTMetrixScore extends Action implements ShouldQueue
