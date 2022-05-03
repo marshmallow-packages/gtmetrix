@@ -69,10 +69,10 @@ class CheckGTMetrixScore extends Action implements ShouldQueue
      *
      * @return array
      */
-    public function fields()
+    public function fields(NovaRequest $request)
     {
         $points = GTMetrix::getCredits();
-        $text = 'You have '. $points .' credits remaining on you GTmedrix account. This action will cost you 1 credit. ';
+        $text = 'You have ' . $points . ' credits remaining on you GTmedrix account. This action will cost you 1 credit. ';
         if ($points < 20) {
             $text .= 'Your account will be restored to 20 credits at ' . GTMetrix::getCreditRefillDate() . '. ';
         }
