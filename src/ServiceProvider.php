@@ -15,10 +15,10 @@ class ServiceProvider extends BaseServiceProvider
      */
     public function register()
     {
-        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
+        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
 
         $this->mergeConfigFrom(
-            __DIR__.'/../config/gtmetrix.php',
+            __DIR__ . '/../config/gtmetrix.php',
             'gtmetrix'
         );
     }
@@ -31,8 +31,8 @@ class ServiceProvider extends BaseServiceProvider
     public function boot()
     {
         Nova::serving(function (ServingNova $event) {
-            Nova::script('marshmallow-gtmetrix-field', __DIR__.'/../dist/js/field.js');
-            Nova::style('marshmallow-gtmetrix-field', __DIR__.'/../dist/css/field.css');
+            Nova::script('marshmallow-gtmetrix-field', __DIR__ . '/../dist/js/gtmetrix.js');
+            Nova::style('marshmallow-gtmetrix-field', __DIR__ . '/../dist/css/gtmetrix.css');
         });
 
         $this->publishes([

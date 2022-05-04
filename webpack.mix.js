@@ -1,9 +1,10 @@
-let mix = require('laravel-mix')
+let mix = require("laravel-mix");
+let path = require("path");
 
-mix.js('resources/js/field.js', 'dist/js')
-    .sass('resources/sass/field.scss', 'dist/css')
-    .webpackConfig({
-        resolve: {
-            symlinks: false
-        }
-    })
+require("./mix");
+
+mix.setPublicPath("dist")
+    .js("resources/js/field.js", "dist/js/gtmetrix.js")
+    .sass("resources/sass/field.scss", "dist/css/gtmetrix.css")
+    .vue({ version: 3 })
+    .nova("marshmallow/gtmetrix");
